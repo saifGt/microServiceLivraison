@@ -25,6 +25,7 @@ public class LivraisonService implements IserviceLiv{
     public Livraison updateLivraison(int id, Livraison l) {
         Livraison livexisting = jpaLivraison.findById(id).get();
         livexisting.setDateLivraison(l.getDateLivraison());
+        livexisting.setEmail(l.getEmail());
         livexisting.setNom(l.getNom());
         livexisting.setFraisLivraison(l.getFraisLivraison());
         livexisting.setStatut(l.getStatut());

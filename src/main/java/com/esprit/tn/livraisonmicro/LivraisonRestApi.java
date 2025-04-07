@@ -13,6 +13,8 @@ import java.util.List;
 public class LivraisonRestApi {
     @Autowired
     private LivraisonService ls ;
+    @Autowired
+    private EmailSendServices es;
     private String title="Hello, i'm the candidate Micro-Service";
     @RequestMapping(value = "/{id}")public ResponseEntity<Livraison> getById(@PathVariable(value = "id") int id) {
         return new ResponseEntity<Livraison>(ls.findById(id),HttpStatus.OK);
@@ -48,6 +50,16 @@ public class LivraisonRestApi {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Échec de la suppression : élément non trouvé");
         }
     }
+
+    @PostMapping("/send")
+    public ResponseEntity<String> sendEmail(@RequestParam String to,@RequestParam String subject,@RequestParam String message){
+        es.sendEmail(to,subject,message);
+        return ResponseEntity.ok("Mail envoiyer avec succes ! ");
+    }
+
+
+
+
 
 
 

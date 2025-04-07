@@ -25,6 +25,15 @@ public class Livraison implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     private LocalDate dateLivraison;
     private String statut;
